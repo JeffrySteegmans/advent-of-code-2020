@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\adventOfCode.Application\adventOfCode.Application.csproj" />
-    <ProjectReference Include="..\adventOfCode.Domain\adventOfCode.Domain.csproj" />
+    <ProjectReference Include="..\..\core\adventOfCode.Application\adventOfCode.Application.csproj" />
+    <ProjectReference Include="..\..\core\adventOfCode.Domain\adventOfCode.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
