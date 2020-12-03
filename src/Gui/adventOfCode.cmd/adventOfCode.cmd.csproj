@@ -5,6 +5,15 @@
     <ProjectReference Include="..\..\core\adventOfCode.Domain\adventOfCode.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="assets\input\day1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\input\day2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
