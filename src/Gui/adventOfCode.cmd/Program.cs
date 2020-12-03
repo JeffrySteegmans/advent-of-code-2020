@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using adventOfCode.Application;
+using adventOfCode.Application.PasswordPolicies;
 
 namespace adventOfCode.cmd
 {
@@ -25,7 +26,11 @@ namespace adventOfCode.cmd
         static void Day2(List<string> passwords)
         {
             ConsoleHelper.PrintHeader("DAY 02 - part 01");
-            var answer = Password.CountValidPasswords(passwords);
+            var answer = Password.CountValidPasswords(new SledRentalPolicy(), passwords);
+            Console.WriteLine($"Answer: {answer}");
+
+            ConsoleHelper.PrintHeader("DAY 02 - part 02");
+            answer = Password.CountValidPasswords(new TobogganPolicy(), passwords);
             Console.WriteLine($"Answer: {answer}");
         }
     }

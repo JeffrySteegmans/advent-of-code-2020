@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using adventOfCode.Application;
 using Xunit;
 
-using adventOfCode.Application;
+using adventOfCode.Application.PasswordPolicies;
 
 namespace adventOfCode.tests
 {
@@ -15,10 +16,34 @@ namespace adventOfCode.tests
             "2-9 c: ccccccccc"
         };
 
-        [Fact]
-        public void ValidPasswordCount_ShouldBe_2()
+        [Theory]
+        [InlineData("1-3 a", "abcde", true)]
+        [InlineData("1-3 b", "cdefg", false)]
+        [InlineData("2-9 c", "ccccccccc", true)]
+        public void CanValidatePassword(string policy, string password, bool expected)
         {
-            Assert.Equal(expected: 2, actual: Password.CountValidPasswords(input));
+            var p = new SledRentalPolicy();
+            p.Parse(policy);
+
+            Assert.Equal(expected: expected, p.Validate(password));
+        }
+
+        [Fact]
+        public void GivenSledRentalPolicy_ValidPasswordCount_ShouldBe2()
+        {
+            var pwdPolicy = new SledRentalPolicy();
+            var actual = Password.CountValidPasswords(pwdPolicy, input);
+
+            Assert.Equal(expected: 2, actual);
+        }
+
+        [Fact]
+        public void GivenTobogganPolicy_ValidPasswordCount_ShouldBe1()
+        {
+            var pwdPolicy = new TobogganPolicy();
+            var actual = Password.CountValidPasswords(pwdPolicy, input);
+
+            Assert.Equal(expected: 1, actual);
         }
     }
 }
