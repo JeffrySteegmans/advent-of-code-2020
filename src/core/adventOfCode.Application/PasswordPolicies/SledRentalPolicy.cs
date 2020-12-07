@@ -1,5 +1,5 @@
 using System.Linq;
-using adventOfCode.Domain;
+using adventOfCode.Domain.Interfaces;
 
 namespace adventOfCode.Application.PasswordPolicies
 {
