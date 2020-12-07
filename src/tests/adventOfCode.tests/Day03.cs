@@ -23,6 +23,14 @@ namespace adventOfCode.tests
             ".#..#...#.#",
         };
         private Slope slope = new Slope(3, 1); 
+        private List<Slope> slopes = new List<Slope>()
+        {
+            new Slope(right: 1, down: 1),
+            new Slope(right: 3, down: 1),
+            new Slope(right: 5, down: 1),
+            new Slope(right: 7, down: 1),
+            new Slope(right: 1, down: 2)
+        };
         
         [Fact]
         public void PositionOfNewMap_ShouldBe_Dot()
@@ -94,6 +102,17 @@ namespace adventOfCode.tests
 
             map.TraverseDown(slope);
             int actual = map.TreeCount;
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void BenchmarkScore_ShouldBe_336()
+        {
+            int expected = 336;
+            Map map = new Map(input);
+
+            var actual = map.Benchmark(slopes);
 
             Assert.Equal(expected, actual);
         }

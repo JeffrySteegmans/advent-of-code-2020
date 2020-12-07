@@ -20,12 +20,7 @@ namespace adventOfCode.Application
             _map = Parse(input);
             _height = _map.GetLength(dimension: 0);
             _width = _map.GetLength(dimension: 1);
-            SetPosition(new Position()
-            {
-                X = 0,
-                Y = 0,
-                Value = _map[0, 0]
-            });
+            Reset();
         }
 
         public Map Move(Slope slope)
@@ -40,6 +35,40 @@ namespace adventOfCode.Application
         {
             while (Position.Y < _height - 1)
                 Move(slope);
+        }
+
+        public long Benchmark(List<Slope> slopes)
+        {
+            long score = 0;
+
+            foreach (var slope in slopes)
+                score = CountAndMultiplyTrees(slope, score);
+
+            return score;
+        }
+
+        private long CountAndMultiplyTrees(Slope slope, long score)
+        {
+            TraverseDown(slope);
+            long trees = TreeCount;
+            Reset();
+
+            if (score == 0)
+                return trees;
+
+            return score * trees;
+        }
+
+        private void Reset()
+        {
+            TreeCount = 0;
+            Path = new List<Position>();
+            SetPosition(new Position()
+            {
+                X = 0,
+                Y = 0,
+                Value = _map[0, 0]
+            });
         }
 
         private Position CalculatePosition(Slope slope)

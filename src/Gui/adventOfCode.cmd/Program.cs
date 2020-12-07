@@ -45,6 +45,20 @@ namespace adventOfCode.cmd
             map.TraverseDown(slope);
             var answer = map.TreeCount;
             Console.WriteLine($"Answer: {answer}");
+
+            List<Slope> slopes = new List<Slope>()
+            {
+                new Slope(right: 1, down: 1),
+                new Slope(right: 3, down: 1),
+                new Slope(right: 5, down: 1),
+                new Slope(right: 7, down: 1),
+                new Slope(right: 1, down: 2)
+            };
+
+            ConsoleHelper.PrintHeader("DAY 03 - part 02");
+            map = new Map(mapInput);
+            long answerPart2 = map.Benchmark(slopes);
+            Console.WriteLine($"Answer: {answerPart2}");
         }
     }
 }
