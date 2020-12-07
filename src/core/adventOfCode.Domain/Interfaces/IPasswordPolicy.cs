@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace adventOfCode.Domain
+namespace adventOfCode.Domain.Interfaces
 {
     public interface IPasswordPolicy
     {

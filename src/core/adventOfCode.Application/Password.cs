@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using adventOfCode.Domain;
+using adventOfCode.Domain.Interfaces;
 
 namespace adventOfCode.Application
 {
