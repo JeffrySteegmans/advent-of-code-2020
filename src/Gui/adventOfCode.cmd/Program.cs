@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using adventOfCode.Application;
 using adventOfCode.Application.PasswordPolicies;
+using adventOfCode.Application.Validators;
 using adventOfCode.Domain;
+using adventOfCode.Serialization;
 
 namespace adventOfCode.cmd
 {
@@ -13,6 +15,7 @@ namespace adventOfCode.cmd
             Day1(Input.ReadInputAsListOfInt(@"assets\input\day1.txt"));
             Day2(Input.ReadInputAsListOfString(@"assets\input\day2.txt"));
             Day3(Input.ReadInputAsListOfString(@"assets\input\day3.txt"));
+            Day4(Input.ReadInputAsString(@"assets\input\day4.txt"));
         }
 
         static void Day1(List<int> expenses) {
@@ -59,6 +62,17 @@ namespace adventOfCode.cmd
             map = new Map(mapInput);
             long answerPart2 = map.Benchmark(slopes);
             Console.WriteLine($"Answer: {answerPart2}");
+        }
+
+        static void Day4(string passportsInput)
+        {
+            PassportSerializer serializer = new PassportSerializer();
+            List<Passport> passports = serializer.Deserialize<Passport>(passportsInput).ToList();
+
+            ConsoleHelper.PrintHeader("DAY 04 - part 01");
+            var handler = new PassportHandler(passports, new PassportValidator());
+            int answer = handler.ValidPassportsCount();
+            Console.WriteLine($"Answer: {answer}");
         }
     }
 }
