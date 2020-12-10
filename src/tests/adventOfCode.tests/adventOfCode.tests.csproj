@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\core\adventOfCode.Application\adventOfCode.Application.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.domain\adventOfCode.Domain.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Serialization\adventOfCode.Serialization.csproj" />
+    <ProjectReference Include="..\..\core\adventOfCode.Validation\adventOfCode.Validation.csproj" />
   </ItemGroup>
 
 </Project>

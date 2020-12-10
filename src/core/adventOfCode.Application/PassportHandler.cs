@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using adventOfCode.Application.Validators;
+﻿using System.Collections.Generic;
 using adventOfCode.Domain;
+using adventOfCode.Domain.Interfaces.Validation;
 
 namespace adventOfCode.Application
 {
