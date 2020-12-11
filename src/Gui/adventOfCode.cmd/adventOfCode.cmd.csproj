@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\core\adventOfCode.Application\adventOfCode.Application.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Domain\adventOfCode.Domain.csproj" />
+    <ProjectReference Include="..\..\core\adventOfCode.Parsing\adventOfCode.Parsing.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Serialization\adventOfCode.Serialization.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Validation\adventOfCode.Validation.csproj" />
   </ItemGroup>
@@ -18,6 +19,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="assets\input\day4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\input\day5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

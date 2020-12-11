@@ -5,6 +5,7 @@ using adventOfCode.Application;
 using adventOfCode.Application.PasswordPolicies;
 using adventOfCode.Domain;
 using adventOfCode.Domain.Interfaces.Validation;
+using adventOfCode.Parsing;
 using adventOfCode.Serialization;
 using adventOfCode.Validation;
 using adventOfCode.Validation.Field;
@@ -23,12 +24,14 @@ namespace adventOfCode.cmd
             {"ecl", new EclValidator()},
             {"pid", new PidValidator()}
         };
+        private static readonly BinarySpacePartitioningParser binarySpacePartitioningParser = new BinarySpacePartitioningParser();
 
         static void Main(string[] args) {
             Day1(Input.ReadInputAsListOfInt(@"assets\input\day1.txt"));
             Day2(Input.ReadInputAsListOfString(@"assets\input\day2.txt"));
             Day3(Input.ReadInputAsListOfString(@"assets\input\day3.txt"));
             Day4(Input.ReadInputAsString(@"assets\input\day4.txt"));
+            Day5(Input.ReadInputAsListOfString(@"assets\input\day5.txt"));
         }
 
         static void Day1(List<int> expenses) {
@@ -90,6 +93,25 @@ namespace adventOfCode.cmd
             ConsoleHelper.PrintHeader("DAY 04 - part 02");
             handler = new PassportHandler(passports, new NorthPoleValidator(fieldValidators));
             answer = handler.ValidPassportsCount();
+            Console.WriteLine($"Answer: {answer}");
+        }
+
+        static void Day5(List<string> seatCodes)
+        {
+            var boardingPasses = new List<BoardingPass>();
+            foreach (string seatCode in seatCodes)
+            {
+                boardingPasses.Add(new BoardingPass(seatCode, binarySpacePartitioningParser));
+            }
+
+            ConsoleHelper.PrintHeader("DAY 05 - part 01");
+            var handler = new BoardingHandler(boardingPasses);
+            int answer = handler.SanityCheck();
+            Console.WriteLine($"Answer: {answer}");
+            
+            ConsoleHelper.PrintHeader("DAY 05 - part 02");
+            handler = new BoardingHandler(boardingPasses);
+            answer = handler.FindMissingSeatId();
             Console.WriteLine($"Answer: {answer}");
         }
     }

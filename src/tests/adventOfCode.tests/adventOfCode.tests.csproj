@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Moq" Version="4.15.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -23,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\core\adventOfCode.Application\adventOfCode.Application.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.domain\adventOfCode.Domain.csproj" />
+    <ProjectReference Include="..\..\core\adventOfCode.Parsing\adventOfCode.Parsing.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Serialization\adventOfCode.Serialization.csproj" />
     <ProjectReference Include="..\..\core\adventOfCode.Validation\adventOfCode.Validation.csproj" />
   </ItemGroup>
