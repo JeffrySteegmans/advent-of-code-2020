@@ -108,6 +108,11 @@ namespace adventOfCode.cmd
             var handler = new BoardingHandler(boardingPasses);
             int answer = handler.SanityCheck();
             Console.WriteLine($"Answer: {answer}");
+            
+            ConsoleHelper.PrintHeader("DAY 05 - part 02");
+            handler = new BoardingHandler(boardingPasses);
+            answer = handler.FindMissingSeatId();
+            Console.WriteLine($"Answer: {answer}");
         }
     }
 }

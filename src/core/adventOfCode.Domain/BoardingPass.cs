@@ -1,8 +1,9 @@
-﻿using adventOfCode.Domain.Interfaces;
+﻿using System;
+using adventOfCode.Domain.Interfaces;
 
 namespace adventOfCode.Domain
 {
-    public class BoardingPass
+    public class BoardingPass : IComparable<BoardingPass>
     {
         private readonly string _seatCode;
         private readonly IParser<string, Seat> _parser;
@@ -13,6 +14,16 @@ namespace adventOfCode.Domain
             _seatCode = seatCode;
             _parser = parser;
             Seat = _parser.Parse(_seatCode);
+        }
+
+        public int CompareTo(BoardingPass other)
+        {
+            return Seat.Id.CompareTo(other.Seat.Id);
+        }
+
+        public override string ToString()
+        {
+            return $"SeatID: {Seat.Id}";
         }
     }
 }
